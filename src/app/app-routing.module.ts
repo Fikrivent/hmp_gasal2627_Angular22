@@ -1,0 +1,54 @@
+import { NgModule } from '@angular/core';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'list',
+    loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
+  {
+    path:'tabs',
+    children: [
+      { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule) },
+      { path: 'list', loadChildren: () => import('./list/list.module').then( m => m.ListPageModule) },
+      { path: 'settings', loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule) },
+    ]
+  },
+  {
+    path: 'pasta',
+    loadChildren: () => import('./pasta/pasta.module').then( m => m.PastaPageModule)
+  },
+  {
+    path: 'pastadetail/:id',
+    loadChildren: () => import('./pastadetail/pastadetail.module').then( m => m.PastadetailPageModule)
+  },
+  {
+    path: 'newpasta',
+    loadChildren: () => import('./newpasta/newpasta.module').then( m => m.NewpastaPageModule)
+  }
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

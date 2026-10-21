@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">settings</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item>
+    <ion-input labelPlacement="floating" label="Masukkan Photo URL : " [(ngModel)]="imageURL">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-img [src]="imageURL"></ion-img>
+  </ion-item>
+  <ion-item>
+    <ion-input (keyup)="validatePassword()" labelPlacement="floating" label="Masukkan Password : " [(ngModel)]="password">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-checkbox labelPlacement="end" [checked]="isMoreThan6Chars" disabled>More than 6 characters</ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-checkbox labelPlacement="end" [checked]="isIncludeNumber" disabled>Include Number</ion-checkbox>
+  </ion-item>
+  <ion-item>
+    <ion-checkbox labelPlacement="end" [checked]="isIncludeSpecialChar" disabled>Include special character (!@#$%^&*)</ion-checkbox>
+  </ion-item>
+
+</ion-content>
